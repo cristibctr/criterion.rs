@@ -23,7 +23,7 @@
         clippy::manual_non_exhaustive, // Remove when MSRV bumped above 1.40
 )]
 
-#[cfg(all(feature = "rayon", target_arch = "wasm32"))]
+#[cfg(all(feature = "rayon", target_arch = "wasm32", not(target_vendor = "wasmer")))]
 compile_error!("Rayon cannot be used when targeting wasi32. Try disabling default features.");
 
 use regex::Regex;
